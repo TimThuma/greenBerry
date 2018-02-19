@@ -40,8 +40,7 @@ class Files(Frame):
             self.txt.delete('1.0', END)
             text = self.readFile(fl)
             self.txt.insert(END, text)
-        
-
+            
     def readFile(self, filename):
         f = open(filename, "r")
         text = f.read()
@@ -50,7 +49,6 @@ class Files(Frame):
     def save_command(self):
         file = filedialog.asksaveasfile(mode='w')
         if file != None:
-                print(self.txt)
                 data = self.txt.get('1.0', END+'-1c')
                 file.write(data)
                 file.close()
