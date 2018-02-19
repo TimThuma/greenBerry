@@ -35,10 +35,12 @@ class Files(Frame):
         ftypes = [('greenBerry files', '*.gb'), ('All files', '*')]
         dlg = filedialog.Open(self, filetypes = ftypes)
         fl = dlg.show()
-
+        
         if fl != '':
+            self.txt.delete('1.0', END)
             text = self.readFile(fl)
             self.txt.insert(END, text)
+        
 
     def readFile(self, filename):
         f = open(filename, "r")
@@ -48,6 +50,7 @@ class Files(Frame):
     def save_command(self):
         file = filedialog.asksaveasfile(mode='w')
         if file != None:
+                print(self.txt)
                 data = self.txt.get('1.0', END+'-1c')
                 file.write(data)
                 file.close()
